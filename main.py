@@ -15,7 +15,8 @@ complete_Message = "Number of the todo to complete: "
 todosList = []
 
 now = time.strftime("%d %b %H:%M:%S")
-print("Hi, the time is" ,now)
+print("Hi Daniel, the time is" ,now)
+
 while True:
     user_action = input(user_prompt)
     user_action = user_action.strip()
