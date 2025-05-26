@@ -9,14 +9,20 @@ gui.theme('Black')
 clock = gui.Text("", key="clock")
 label = gui.Text("Type in a To-Do")
 input_Box = gui.InputText(tooltip="Enter A To Do", key="todo")
-add_button = gui.Button("Add")
+add_button = gui.Button(size=2, image_source="add.png",
+                        tooltip="Add item List",
+                        mouseover_colors="LightBlue4",
+                        key="Add")
 current_label = gui.Text("List of Current Todos")
 list_box = gui.Listbox(values=functions.get_todos(),
                        key="todos",
                        enable_events=True,
                        size=[45, 10])
 edit_button = gui.Button("Edit")
-complete_button = gui.Button("Complete")
+complete_button = gui.Button(size=2, image_source="complete.png",
+                        tooltip="Complete Item in List",
+                        mouseover_colors="LightBlue4",
+                        key="Complete")
 exit_button = gui.Button("Exit")
 
 window = gui.Window('My To Do App',
