@@ -1,6 +1,11 @@
 import functions
 import FreeSimpleGUI as gui
 import time
+import os
+
+if not os.path.exists("todo.txt"):
+    with open("todo.txt", "w") as file:
+        pass
 
 #Themes can be added by googling "py simple gui theme" and selecting a ID Theme
 #gui.theme('Topanga')
