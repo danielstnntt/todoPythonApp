@@ -9,13 +9,28 @@ import streamlit as st
 
 todos = functions.get_todos()
 
+def add_todo():
+    #session_state is a dictionary that stores the value on the user's session
+    #e.g from below: { new_todo: "Fix Computer" }
+    todo = st.session_state["new_todo"] + "\n"
+    todos.append(todo)
+    functions.write_todos(todos)
+
 st.title("My Todo App")
-st.subheader("Please add a ToDo Item to the list")
-st.text_input(label="", placeholder="Right Here...")
 
-for item in todos:
-    st.checkbox(item)
+st.text_input(label="Please add a ToDo Item to the list",
+              placeholder="Right Here...",
+              on_change=add_todo,
+              key="new_todo")
 
+for index, todo in enumerate(todos):
+    checkbox = st.checkbox(todo, key=todo)
+    if checkbox:
+        todos.pop(index)
+        functions.write_todos(todos)
+        del st.session_state[todo]
+        #This manually trigger a rerun of your Streamlit app
+        st.rerun()
 
-
-
+#When the page is loaded, it shows all components and there values on the page dynamically
+st.session_state
